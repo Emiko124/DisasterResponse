@@ -57,7 +57,8 @@ def clean_data(df):
     df = pd.concat([df,categories], axis = 1)
     #remove duplicates
     df.drop_duplicates(inplace = True)
-    
+    #drop 188 rows with 'related' category response '2'  : 2=not disaster related , which means 1=disaster related, zero presumably = missing
+    df = df[df['related'] != 2]
     return df
 
 
